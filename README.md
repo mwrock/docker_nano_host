@@ -38,6 +38,8 @@ to
         end
 ```
 
+This [PR](https://github.com/mitchellh/vagrant/pull/7831) has been submitted to fix this in Vagrant.
+
 ## I want to run on Windows Azure
 
 You can do this using [Stuart Preston's](https://github.com/stuartpreston) excellent [kitchen-azurerm](https://github.com/pendrica/kitchen-azurerm) driver.
