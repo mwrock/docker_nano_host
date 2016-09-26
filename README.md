@@ -22,11 +22,9 @@ A sample cookbook that can configure a Windows Nano Server as a Docker container
 * `docker pull microsoft/nanoserver`
 * `docker run -it microsoft/nanoserver powershell`
 
-## Problems on Hyper-V
+## Vagrant hang on Nano RTM
 
-The vagrant box supports a Hyper-V and VirtualBox providers. There is a known issue with the Hyper-V provider on nano:
-
-Vagrant validates winrm connectivity using powershell in such a way that breaks. A small change to the vagrant source can work around this. Update `C:\HashiCorp\Vagrant\embedded\gems\gems\vagrant-1.8.5\plugins\communicators\winrm\communicator.rb` and change
+There is an issue with the RTM Windows Nano image that will hang a vagrant box when it first tries to authenticate during kitchen create. Vagrant validates winrm connectivity using powershell in such a way that breaks. A small change to the vagrant source can work around this. Update `C:\HashiCorp\Vagrant\embedded\gems\gems\vagrant-1.8.5\plugins\communicators\winrm\communicator.rb` and change
 
 ```
         result = Timeout.timeout(@machine.config.winrm.timeout) do
