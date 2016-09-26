@@ -24,9 +24,9 @@ A sample cookbook that can configure a Windows Nano Server as a Docker container
 
 ## Problems on Hyper-V
 
-The vagrant box supports a Hyper-V and VirtualBox providers. There are two known issues with the Hyper-V provider:
+The vagrant box supports a Hyper-V and VirtualBox providers. There is a known issue with the Hyper-V provider on nano:
 
-1: Vagrant validates winrm connectivity using powershell in such a way that breaks. A small change to the vagrant source can work around this. Update `C:\HashiCorp\Vagrant\embedded\gems\gems\vagrant-1.8.5\plugins\communicators\winrm\communicator.rb` and change
+Vagrant validates winrm connectivity using powershell in such a way that breaks. A small change to the vagrant source can work around this. Update `C:\HashiCorp\Vagrant\embedded\gems\gems\vagrant-1.8.5\plugins\communicators\winrm\communicator.rb` and change
 
 ```
         result = Timeout.timeout(@machine.config.winrm.timeout) do
@@ -39,8 +39,6 @@ to
           shell(true).cmd("hostname")
         end
 ```
-
-2: The Hyper-V box may "Blue Screen" on first boot once or twice. If this happens, you should reboot the box and then it should boot normally moving forward. I anticipate this will be fixed in future RTM builds.
 
 ## I want to run on Windows Azure
 
