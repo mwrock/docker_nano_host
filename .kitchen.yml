@@ -4,19 +4,18 @@ driver:
 
 provisioner:
   name: chef_zero
+  install_msi_url: https://s3-us-west-2.amazonaws.com/nano-chef-client/chef-12.14.60.appx
 
 verifier:
   name: inspec
 
 platforms:
-  - name: ubuntu-16.04
-  - name: centos-7.2
+  - name: windows-nano
+    driver_config:
+      box: mwrock/WindowsNano
 
 suites:
   - name: default
     run_list:
+      - recipe[nano_test::default]
       - recipe[docker_nano_host::default]
-    verifier:
-      inspec_tests:
-        - test/recipes
-    attributes:
