@@ -20,7 +20,7 @@ A sample cookbook that can configure a Windows Nano Server as a Docker container
 * Install the docker client locally (windows or linux)
 * Ensure your `DOCKER_HOST` is set as above
 * `docker pull microsoft/nanoserver`
-* `docker run -it microsoft/nanoserver cmd`
+* `docker run -it microsoft/nanoserver powershell`
 
 ## Problems on Hyper-V
 
