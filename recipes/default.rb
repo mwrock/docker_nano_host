@@ -8,11 +8,11 @@ powershell_script 'install nano container package' do
   not_if '(Get-Module xNetworking -list) -ne $null'
 end
 
-zip_path = "#{Chef::Config[:file_cache_path]}/docker-1.12.0.zip"
+zip_path = "#{Chef::Config[:file_cache_path]}/docker.zip"
 docker_config = File.join(ENV["ProgramData"], "docker", "config")
 
 remote_file zip_path do
-  source "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip"
+  source "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip"
   action :create_if_missing
 end
 
