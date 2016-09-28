@@ -1,10 +1,5 @@
-powershell_script 'install Nuget package provider' do
-  code 'Install-PackageProvider -Name NuGet -Force'
-  not_if '(Get-PackageProvider -Name Nuget -ListAvailable -ErrorAction SilentlyContinue) -ne $null'
-end
-
-powershell_script 'install nano container package' do
-  code 'Install-Module -Name xNetworking -Force'
+powershell_script 'install networking dsc module' do
+  code 'Install-package -Name xNetworking -ForceBootstrap -Provider PowerShellGet -Force'
   not_if '(Get-Module xNetworking -list) -ne $null'
 end
 
