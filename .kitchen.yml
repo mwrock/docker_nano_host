@@ -17,5 +17,4 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[nano_test::default]
       - recipe[docker_nano_host::default]
